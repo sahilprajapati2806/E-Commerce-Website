@@ -7,6 +7,7 @@ import Wishlist from './Components/Pages/Wishlist'
 import Store from './Components/Slice/Store'
 import Auth from './Components/Pages/Auth'
 import { Provider } from "react-redux"
+import Success from './Components/Pages/Success'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/wishlist' element={<Wishlist />} />
           <Route path='/auth' element={<Auth/>}/>
+          <Route path='/success' element={<Success/>}/>
          
 
         </Routes>

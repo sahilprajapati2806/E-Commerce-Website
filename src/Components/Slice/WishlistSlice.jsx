@@ -1,29 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState =
-  JSON.parse(localStorage.getItem("wishlist")) || [];
+// User specific wishlist fetch karva mate
+const getWishlistFromStorage = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user && user._id) {
+    return JSON.parse(localStorage.getItem(`wishlist_${user._id}`)) || [];
+  }
+  return [];
+};
 
-const WishlistSlice = createSlice({
+const Wishlistslice = createSlice({
   name: "wishlist",
-  initialState,
+  initialState: getWishlistFromStorage(),
   reducers: {
     addToWishlist(state, action) {
-      const item = state.find(i => i._id === action.payload.id);
-
-      if (!item) {
+      const itemExists = state.find(i => i._id === action.payload._id);
+      if (!itemExists) {
         state.push(action.payload);
-        localStorage.setItem("wishlist", JSON.stringify(state));
+      }
+      
+      const user = JSON.parse(localStorage.getItem("user"));
+      if(user) {
+        localStorage.setItem(`wishlist_${user._id}`, JSON.stringify(state));
       }
     },
 
     removeFromWishlist(state, action) {
-      const updated = state.filter(item => item._id !== action.payload);
-      localStorage.setItem("wishlist", JSON.stringify(updated));
-      return updated;
+      const newState = state.filter(i => i._id !== action.payload);
+      
+      const user = JSON.parse(localStorage.getItem("user"));
+      if(user) {
+        localStorage.setItem(`wishlist_${user._id}`, JSON.stringify(newState));
+      }
+      return newState;
+    },
+
+    clearWishlist(state) {
+      return [];
     }
   }
 });
 
-export const { addToWishlist, removeFromWishlist } =
-  WishlistSlice.actions;
-export default WishlistSlice.reducer;
+export const { addToWishlist, removeFromWishlist, clearWishlist } = Wishlistslice.actions;
+export default Wishlistslice.reducer;

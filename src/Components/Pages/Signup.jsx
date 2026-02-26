@@ -3,9 +3,9 @@ import axios from "axios";
 
 const Signup = () => {
   const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: ""
+      name: "",
+      email: "",
+      password: ""
   });
 
   const handleChange = (e) => {
