@@ -25,7 +25,7 @@ const Cart = () => {
       const storedUser = JSON.parse(localStorage.getItem("user"));
       if (storedUser && storedUser._id) {
         try {
-          const response = await fetch(`http://localhost:4000/api/user/getone/${storedUser._id}`);
+          const response = await fetch(`https://e-commerce-backend-2-w237.onrender.com/api/user/getone/${storedUser._id}`);
           const data = await response.json();
 
           console.log("Database Response:", data); 

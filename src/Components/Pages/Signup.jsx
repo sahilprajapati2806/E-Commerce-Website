@@ -15,7 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post("http://localhost:4000/user/signup", data);
+    await axios.post("https://e-commerce-backend-2-w237.onrender.com/user/signup", data);
 
     alert("Signup Successful");
   };

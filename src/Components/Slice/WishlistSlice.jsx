@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// User specific wishlist fetch karva mate
+
 const getWishlistFromStorage = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   if (user && user._id) {

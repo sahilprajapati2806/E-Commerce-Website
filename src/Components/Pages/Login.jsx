@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
 
     const res = await axios.post(
-      "http://localhost:4000/main/login",
+      "https://e-commerce-backend-2-w237.onrender.com/main/login",
       data
     );
 

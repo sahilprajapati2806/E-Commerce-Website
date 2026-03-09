@@ -11,7 +11,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:4000/product")
+        fetch("https://e-commerce-backend-2-w237.onrender.com/product")
             .then((res) => res.json())
             .then((data) => {
                 setSold(data)
